@@ -1,5 +1,6 @@
 package com.ashudevs.twitterurlextractor;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -61,9 +62,9 @@ public abstract class TwitterExtractor {
 
     private void getTweet(final Long id) {
 
-        TwitterApiClient twitterApiClient = TwitterCore.getInstance().getApiClient();
+        final TwitterApiClient twitterApiClient = TwitterCore.getInstance().getApiClient();
         StatusesService statusesService = twitterApiClient.getStatusesService();
-        Call<Tweet> tweetCall = statusesService.show(id, null, null, null);
+        final Call<Tweet> tweetCall = statusesService.show(id, null, null, null);
         tweetCall.enqueue(new Callback<Tweet>() {
             @Override
             public void success(Result<Tweet> result) {
@@ -113,6 +114,7 @@ public abstract class TwitterExtractor {
         });
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class loadTwiterFileData extends AsyncTask<Void,Void,TwitterFile>
     {
          private String url;
