@@ -165,7 +165,7 @@ public abstract class TwitterExtractor {
             }
             else
             {
-                onExtractionFail("Somthing Wrong Check Link");
+                onExtractionFail("Somthing Wrong Check Your Link");
             }
         }
     }
